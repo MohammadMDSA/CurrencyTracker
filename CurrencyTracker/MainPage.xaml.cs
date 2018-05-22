@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -58,6 +59,22 @@ namespace CurrencyTracker
 			Checks.Reverse();
 			ChecksList.ItemsSource = Checks;
 			Checks.Reverse();
+		}
+
+	}
+
+	public class ColorConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, string language)
+		{
+			var deposit = (bool)value;
+
+			return new SolidColorBrush(deposit ? Colors.Green : Colors.Red);
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
