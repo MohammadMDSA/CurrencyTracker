@@ -13,7 +13,13 @@
 				<Setter Property="VerticalAlignment" Value="Center"/>
 			</Style>
 		</Grid.Resources>
-		<ListView x:Name="ChecksList" Header="Checks:" Margin="10" VerticalAlignment="Stretch" ItemClick="ChecksList_ItemClick">
+		<ListView x:Name="ChecksList" Margin="10" VerticalAlignment="Stretch" ItemClick="ChecksList_ItemClick">
+			<ListView.Header>
+				<Grid>
+					<TextBlock Text="Checks:" HorizontalAlignment="Left"/>
+					<Button x:Name="AddCheckBtn" Content="&#xE109;" HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets" Click="AddCheckBtn_Click"/>
+				</Grid>
+			</ListView.Header>
 			<ListView.ItemContainerStyle>
 				<Style TargetType="ListViewItem">
 					<Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>

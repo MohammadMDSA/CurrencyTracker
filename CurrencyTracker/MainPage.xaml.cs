@@ -45,5 +45,10 @@ namespace CurrencyTracker
 		{
 			
 		}
+
+		private void AddCheckBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
