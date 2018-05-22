@@ -5,6 +5,7 @@
     xmlns:local="using:CurrencyTracker"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:animation="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -16,8 +17,8 @@
 		<ListView x:Name="ChecksList" Margin="10" VerticalAlignment="Stretch" ItemClick="ChecksList_ItemClick">
 			<ListView.Header>
 				<Grid>
-					<TextBlock Text="Checks:" HorizontalAlignment="Left"/>
-					<Button x:Name="AddCheckBtn" Content="&#xE109;" HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets" Click="AddCheckBtn_Click"/>
+					<TextBlock FontSize="30" Text="Checks:" HorizontalAlignment="Left"/>
+					<Button x:Name="AddCheckBtn" Content="&#xE109;" HorizontalAlignment="Right" FontFamily="Segoe MDL2 Assets" Click="AddCheckBtn_Click" animation:Connected.Key="title"/>
 				</Grid>
 			</ListView.Header>
 			<ListView.ItemContainerStyle>
@@ -25,10 +26,14 @@
 					<Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
 				</Style>
 			</ListView.ItemContainerStyle>
-			<x:String>ss</x:String>
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+						<Grid.Resources>
+							<Style TargetType="TextBlock">
+								<Setter Property="VerticalAlignment" Value="Center"/>
+							</Style>
+						</Grid.Resources>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="3*"/>
 							<RowDefinition Height="*"/>

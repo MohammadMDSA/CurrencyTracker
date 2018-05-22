@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -50,6 +51,8 @@ namespace CurrencyTracker
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+				SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
@@ -73,12 +76,23 @@ namespace CurrencyTracker
             }
         }
 
-        /// <summary>
-        /// Invoked when Navigation to a certain page fails
-        /// </summary>
-        /// <param name="sender">The Frame which failed navigation</param>
-        /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+		private void App_BackRequested(object sender, BackRequestedEventArgs e)
+		{
+			var rootFrame = Window.Current.Content as Frame;
+
+			if (rootFrame.CanGoBack)
+			{
+				e.Handled = true;
+				rootFrame.GoBack();
+			}
+		}
+
+		/// <summary>
+		/// Invoked when Navigation to a certain page fails
+		/// </summary>
+		/// <param name="sender">The Frame which failed navigation</param>
+		/// <param name="e">Details about the navigation failure</param>
+		void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }

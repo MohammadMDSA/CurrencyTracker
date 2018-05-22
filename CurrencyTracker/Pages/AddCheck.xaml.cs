@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CurrencyTracker.Models;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +31,21 @@ namespace CurrencyTracker.Pages
 
 		private void Submitbtn_Click(object sender, RoutedEventArgs e)
 		{
+			if (TitleBox.Text == string.Empty || DescBox.Text == string.Empty || AmountBox.Text == string.Empty || DatePicker.Date == null)
+			{
+				ErrorNotif.Show("You should fill all fields...");
+				return;
+			}
 
+			decimal amount;
+
+			if (!decimal.TryParse(AmountBox.Text, out amount))
+			{
+				ErrorNotif.Show("Amount is not valid...");
+				return;
+			}
+
+			(Window.Current.Content as Frame).Navigate(typeof(MainPage), new Check { Amount = amount, DateTime = DatePicker.Date.Value.DateTime, Description = DescBox.Text, Title = TitleBox.Text });
 		}
 
 		private void CancelBtn_Click(object sender, RoutedEventArgs e)

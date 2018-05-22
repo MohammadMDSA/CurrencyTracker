@@ -5,21 +5,26 @@
     xmlns:local="using:CurrencyTracker.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:animation="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<controls:InAppNotification x:Name="ErrorNotif"/>
+
 		<StackPanel Orientation="Vertical">
 			<StackPanel.Resources>
 				<Style TargetType="TextBox">
-					<Setter Property="Margin" Value="5"/>
+					<Setter Property="Margin" Value="10"/>
 				</Style>
 				<Style TargetType="CalendarDatePicker">
-					<Setter Property="Margin" Value="5"/>
+					<Setter Property="Margin" Value="10"/>
 				</Style>
 			</StackPanel.Resources>
-			<TextBox x:Name="TitleBox" Header="Title:"/>
-			<TextBox x:Name="DescBox" Header="Description:"/>
-			<TextBox x:Name="AmoundBox" Header="Amount:" InputScope="Number"/>
+			<TextBlock Text="Add Check:" Margin="5" FontSize="30" animation:Connected.Key="title"/>
+			<TextBox x:Name="TitleBox" Header="Title:" MaxLength="20"/>
+			<TextBox x:Name="DescBox" Header="Description:" MaxLength="100"/>
+			<TextBox x:Name="AmountBox" Header="Amount:" InputScope="Number"/>
 			<CalendarDatePicker x:Name="DatePicker" HorizontalAlignment="Stretch" Header="Date:"/>
 			<StackPanel Orientation="Horizontal">
 				<StackPanel.Resources>
@@ -31,5 +36,5 @@
 				<Button x:Name="CancelBtn" Content="Cancel" Click="CancelBtn_Click"/>
 			</StackPanel>
 		</StackPanel>
-    </Grid>
+	</Grid>
 </Page>
