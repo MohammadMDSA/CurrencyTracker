@@ -7,7 +7,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.Resources>
+			<Style TargetType="TextBlock">
+				<Setter Property="VerticalAlignment" Value="Center"/>
+			</Style>
+		</Grid.Resources>
+		<ListView x:Name="ChecksList" Header="Checks:" Margin="10" VerticalAlignment="Stretch" ItemClick="ChecksList_ItemClick">
+			<ListView.ItemContainerStyle>
+				<Style TargetType="ListViewItem">
+					<Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+				</Style>
+			</ListView.ItemContainerStyle>
+			<x:String>ss</x:String>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="3*"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<TextBlock FontSize="20" Text="{Binding Path=Title}" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" Grid.Row="0"/>
+						<TextBlock FontSize="12" ScrollViewer.VerticalScrollMode="Enabled" Text="{Binding Path=Description}" LineStackingStrategy="MaxHeight" MaxLines="1" TextWrapping="WrapWholeWords" Margin="10, 0" HorizontalAlignment="Left" Grid.Row="1"/>
+						<TextBlock FontSize="25" Text="{Binding Path=Amount}" HorizontalAlignment="Right" Grid.Row="0"/>
+						<TextBlock FontSize="10" Text="{Binding Path=DateTime}" HorizontalAlignment="Right" Grid.Row="1"/>
+					</Grid>
+					
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</Grid>
 </Page>
+	
+	
+	
