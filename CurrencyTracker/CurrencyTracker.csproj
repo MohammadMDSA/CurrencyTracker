@@ -102,6 +102,9 @@
     <Compile Include="Pages\AddCheck.xaml.cs">
       <DependentUpon>AddCheck.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CheckDetail.xaml.cs">
+      <DependentUpon>CheckDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +133,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\AddCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CheckDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
