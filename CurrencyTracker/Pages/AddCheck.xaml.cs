@@ -45,7 +45,7 @@ namespace CurrencyTracker.Pages
 				return;
 			}
 
-			(Window.Current.Content as Frame).Navigate(typeof(MainPage), new Check { Amount = amount, DateTime = DatePicker.Date.Value.DateTime, Description = DescBox.Text, Title = TitleBox.Text });
+			(Window.Current.Content as Frame).Navigate(typeof(MainPage), new Check { Amount = amount, DateTime = DatePicker.Date.Value.DateTime, Description = DescBox.Text, Title = TitleBox.Text, IsDeposit = (TypeCom.SelectedIndex == 1 ? true : false)});
 		}
 
 		private void CancelBtn_Click(object sender, RoutedEventArgs e)

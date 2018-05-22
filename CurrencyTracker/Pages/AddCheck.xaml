@@ -20,12 +20,19 @@
 				<Style TargetType="CalendarDatePicker">
 					<Setter Property="Margin" Value="10"/>
 				</Style>
+				<Style TargetType="ComboBox">
+					<Setter Property="Margin" Value="10"/>
+				</Style>
 			</StackPanel.Resources>
 			<TextBlock Text="Add Check:" Margin="5" FontSize="30" animation:Connected.Key="title"/>
 			<TextBox x:Name="TitleBox" Header="Title:" MaxLength="20"/>
 			<TextBox x:Name="DescBox" Header="Description:" MaxLength="100"/>
 			<TextBox x:Name="AmountBox" Header="Amount:" InputScope="Number"/>
 			<CalendarDatePicker x:Name="DatePicker" HorizontalAlignment="Stretch" Header="Date:"/>
+			<ComboBox x:Name="TypeCom" HorizontalAlignment="Stretch" Header="Check Type:" SelectedIndex="0">
+				<x:String>Deposit</x:String>
+				<x:String>Withdrawal</x:String>
+			</ComboBox>
 			<StackPanel Orientation="Horizontal">
 				<StackPanel.Resources>
 					<Style TargetType="Button">
