@@ -99,6 +99,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\CheckListItem.cs" />
     <Compile Include="Pages\AddCheck.xaml.cs">
       <DependentUpon>AddCheck.xaml</DependentUpon>
     </Compile>
