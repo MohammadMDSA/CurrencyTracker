@@ -52,19 +52,19 @@
 							<ColumnDefinition Width="auto"/>
 							<ColumnDefinition Width="*"/>
 						</Grid.ColumnDefinitions>
-						<TextBlock VerticalAlignment="Center" Margin="5,0,0,0" FontSize="20" Grid.Column="0" Text="Title" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" Grid.Row="0"/>
-						<TextBlock VerticalAlignment="Bottom" Margin="5" FontSize="12" Grid.Column="0" Text="Description" LineStackingStrategy="MaxHeight" MaxLines="1" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" Grid.Row="1"/>
-						<TextBlock VerticalAlignment="Bottom" Margin="0,0,0,5" FontSize="10" Grid.Column="0" Text="DateTime" HorizontalAlignment="Right" Grid.Row="1"/>
+						<TextBlock VerticalAlignment="Center" Margin="5,0,0,0" FontSize="20" Grid.Column="0" Text="{Binding Path=Check.Title}" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" Grid.Row="0"/>
+						<TextBlock VerticalAlignment="Bottom" Margin="5" FontSize="12" Grid.Column="0" Text="{Binding Path=Check.Description}" LineStackingStrategy="MaxHeight" MaxLines="1" TextWrapping="WrapWholeWords" HorizontalAlignment="Left" Grid.Row="1"/>
+						<TextBlock VerticalAlignment="Bottom" Margin="0,0,0,5" FontSize="10" Grid.Column="0" Text="{Binding Path=Check.DateTime}" HorizontalAlignment="Right" Grid.Row="1"/>
 
 						<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5,0,0" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="0">
-							<TextBlock VerticalAlignment="Center" FontSize="25" Foreground="{Binding Converter={StaticResource ColorConverter}, Path=IsDeposit}" Text="Amount"/>
-							<TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack" Foreground="{Binding Converter={StaticResource ColorConverter}, Path=IsDeposit}" Text="{Binding Converter={StaticResource ArrowConverter}, Path=IsDeposit}" FontFamily="Segoe MDL2 Assets" Margin="3,0,0,0"/>
+							<TextBlock VerticalAlignment="Center" FontSize="25" Foreground="{Binding Converter={StaticResource ColorConverter}, Path=Check.IsDeposit}" Text="{Binding Path=Check.Amount}"/>
+							<TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack" Foreground="{Binding Converter={StaticResource ColorConverter}, Path=Check.IsDeposit}" Text="{Binding Converter={StaticResource ArrowConverter}, Path=Check.IsDeposit}" FontFamily="Segoe MDL2 Assets" Margin="3,0,0,0"/>
 						</StackPanel>
 
 						<AppBarSeparator Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left"/>
 						<StackPanel Orientation="Vertical" Grid.Column="2" Grid.RowSpan="2">
 							<TextBlock Text="Total:" FontSize="10"/>
-							<TextBlock Text="Total" FontSize="25"/>
+							<TextBlock Text="{Binding Path=Total}" FontSize="25"/>
 						</StackPanel>
 					
 					</Grid>

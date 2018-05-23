@@ -26,6 +26,7 @@ namespace CurrencyTracker
     public sealed partial class MainPage : Page
     {
 		private static List<Check> Checks = new List<Check>();
+		private static decimal Total = 0m;
 
         public MainPage()
         {
@@ -57,9 +58,19 @@ namespace CurrencyTracker
 
 		private void UpdateUI()
 		{
-			Checks.Reverse();
-			ChecksList.ItemsSource = Checks;
-			Checks.Reverse();
+			var checklistItems = new List<CheckListItem>();
+			var total = Total;
+
+			foreach (var item in Checks)
+			{
+				int coe = 1 * (item.IsDeposit ? 1 : -1);
+				total += coe * item.Amount;
+				checklistItems.Add(new CheckListItem { Total = total, Check = item });
+			}
+
+			checklistItems.Reverse();
+
+			ChecksList.ItemsSource = checklistItems;
 		}
 
 	}
