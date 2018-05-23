@@ -38,8 +38,9 @@ namespace CurrencyTracker
 			if (( check = e.Parameter as Check) != null){
 				Checks.Add(check);
 			}
-			var c = new Check { Amount = 1000.717273M, Title = "Title", DateTime = DateTime.Now, Description = "Foofds;kdsjfds;klkfjds;gljdsg;lkajf;adslkfjasd;lkfjasd;flkjadsf'kasdljf'asdklfjasdfkl'jed'l\nfdsjf;sdkjfsd;lfkjsd;fgkjsdf;dslkjfsad;klfsdd;lfsdf\nsdf;sdjf;dsfjsd;lkfjsd;fklkjsd;fkdsjf;dsllkjf bar" };
-			Checks.Add(c);
+
+			Checks.Add(new Check { Amount = 100, DateTime = DateTime.Now, Description = "Desc", IsDeposit = true, Title = "Title" });
+			Checks.Add(new Check { Amount = 100, DateTime = DateTime.Now, Description = "Desc", IsDeposit = false, Title = "Title" });
 
 			UpdateUI();
 		}
@@ -69,7 +70,7 @@ namespace CurrencyTracker
 		{
 			var deposit = (bool)value;
 
-			return new SolidColorBrush(deposit ? Colors.Green : Colors.Red);
+			return new SolidColorBrush(deposit ? Color.FromArgb(40, 0, 255, 0) : Color.FromArgb(40, 255, 0, 0));
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, string language)
