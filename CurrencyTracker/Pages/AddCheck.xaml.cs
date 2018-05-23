@@ -31,7 +31,7 @@ namespace CurrencyTracker.Pages
 
 		private void Submitbtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (TitleBox.Text == string.Empty || DescBox.Text == string.Empty || AmountBox.Text == string.Empty || DatePicker.Date == null)
+			if (TitleBox.Text == string.Empty || AmountBox.Text == string.Empty || DatePicker.Date == null)
 			{
 				ErrorNotif.Show("You should fill all fields...");
 				return;
@@ -45,7 +45,13 @@ namespace CurrencyTracker.Pages
 				return;
 			}
 
-			(Window.Current.Content as Frame).Navigate(typeof(MainPage), new Check { Amount = amount, DateTime = DatePicker.Date.Value.DateTime, Description = DescBox.Text, Title = TitleBox.Text, IsDeposit = (TypeCom.SelectedIndex == 1 ? true : false)});
+			if (amount <= 0)
+			{
+				ErrorNotif.Show("Amount value must be greater than 0");
+				return;
+			}
+
+			(Window.Current.Content as Frame).Navigate(typeof(MainPage), new Check { Amount = amount, DateTime = DatePicker.Date.Value.DateTime, Description = DescBox.Text, Title = TitleBox.Text, IsDeposit = (TypeCom.SelectedIndex == 0 ? true : false)});
 		}
 
 		private void CancelBtn_Click(object sender, RoutedEventArgs e)
