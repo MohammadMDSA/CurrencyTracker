@@ -70,7 +70,22 @@ namespace CurrencyTracker
 		{
 			var deposit = (bool)value;
 
-			return new SolidColorBrush(deposit ? Color.FromArgb(40, 0, 255, 0) : Color.FromArgb(40, 255, 0, 0));
+			return new SolidColorBrush(deposit ? Colors.Green : Colors.Red);
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public class ArrowConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, string language)
+		{
+			var deposit = (bool)value;
+
+			return deposit ? "\uE74A" : "\uE74B";
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, string language)
